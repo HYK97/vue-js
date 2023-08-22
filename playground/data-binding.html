@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p v-bind:id="uuid" v-bind:name="name" v-bind:class="clazz">{{ num }}</p><!-- v-bind:id or v-bind:class 등 동적으로 dom 관련 값을 바꿀수있음-->
+
+    <p>{{ doubleNum }}</p>
+
+    <div v-if="loading"> <!-- v-if는 dom에서 완전히 제거됨-->
+      Loading...
+    </div>
+    
+    <div v-else>
+      test user has been logged in
+    </div>
+
+    <div v-show="loading"> <!-- v-show는 display:none;으로 처리됨-->
+      Loading...
+    </div>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>  
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        num: 30,
+        uuid: 'abc1234', //dom 관련 값을 동적으로 바꿀 수 있음 ex) id, class..
+        name: 'testName',
+        clazz: 'testClass',
+        loading: true
+      },
+      computed: { //계산된 속성
+        doubleNum: function() {
+          return this.num * 2;
+        }
+      } 
+    })
+  </script>
+</body>
+</html>
