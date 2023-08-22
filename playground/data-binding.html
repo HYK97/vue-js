@@ -23,6 +23,10 @@
       Loading...
     </div>
 
+    <input v-model="message" type="text" placeholder="입력해주세요"> <!-- https://vuejs.org/guide/essentials/forms.html  공식문서 활용-->
+    <p>입력 메세지 : {{ message }}</p>
+    
+
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>  
   <script>
@@ -33,7 +37,8 @@
         uuid: 'abc1234', //dom 관련 값을 동적으로 바꿀 수 있음 ex) id, class..
         name: 'testName',
         clazz: 'testClass',
-        loading: true
+        loading: true,
+        message: ''
       },
       computed: { //계산된 속성
         doubleNum: function() {

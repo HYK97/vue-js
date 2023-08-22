@@ -23,8 +23,12 @@
           return this.num * 2;
         }
       },
-      watch: {
-        num: function(newValue, oldValue) {
+      // computed와 watch의 차이점은 computed는 캐싱을 하고 있어서 num이 바뀌지 않으면 계산을 하지 않음
+      // 따라서 computed는 validation을 할 때 사용하면 좋음
+      // watch는 axios와 같은 api 데이터를 요청할 때 사용하면 좋음
+      // 기본적인 가벼운 계산은 computed를 사용하고, 무거운 계산은 watch를 사용하는 것이 좋다.
+      watch: { 
+        num: function(newValue, oldValue) { 
           this.fetchUserByNumber(newValue);
         }
       },
